@@ -9,5 +9,4 @@ if [ "$current_branch" = "main" ]; then
 fi
 
 npx lint-staged
-
 npm run lint
