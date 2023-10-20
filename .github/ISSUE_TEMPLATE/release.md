@@ -26,8 +26,8 @@ assignees: ''
 
 ## GitHub
 
-- [ ] [Close されている PR 一覧](https://github.com/sinProject-Inc/sinpro-template-for-sveltekit/pulls?q=is%3Apr+sort%3Aupdated-desc+is%3Aclosed) で、機能拡張だと思われるものに `enhancement` のラベルを付ける。
-- [ ] [GitHub のリリース 作成ページ](https://github.com/sinProject-Inc/sinpro-template-for-sveltekit/releases)を開き、`Draft a new release` ボタンをクリックする。
+- [ ] [Close されている PR 一覧](https://github.com/sinProject-Inc/back-to-domain/pulls?q=is%3Apr+sort%3Aupdated-desc+is%3Aclosed) で、機能拡張だと思われるものに `enhancement` のラベルを付ける。
+- [ ] [GitHub のリリース 作成ページ](https://github.com/sinProject-Inc/back-to-domain/releases)を開き、`Draft a new release` ボタンをクリックする。
 - [ ] `Choose a tag` で、新規作成したタグを選択する。
 - [ ] `Generate release notes` ボタンを押す。
 - [ ] 自動生成されたリリースノートの Release に関する項目を削除する。
@@ -50,25 +50,3 @@ assignees: ''
 ## 告知
 
 - [ ] SNS 更新を告知する。
-
-```markdown
-@channel
-
-Docs ガイドラインを更新しましたのでご案内いたします。
-興味があるところ、業務に関係するところを確認しておいてくださいませ。
-
-New
-
-- Books
-
-Update
-
-- GitHub Actions - Secrets
-- Git Branches and Commits - Script
-
-確認が完了しましたらリアクションをお願い致します。
-また、気になることがありましたらお気軽にご連絡くださいませ。
-よろしくお願いいたします。
-
-@岩崎 さん、SNS 告知お願い致します。
-```

@@ -10,18 +10,21 @@ export class CreateGitBranch {
 	}
 
 	private _generate_branch_name(issue_string: string): string {
-		// Issue名と番号を抽出
 		const issue_parts = RegExp(/^(.*?)(#\d+)$/).exec(issue_string)
 
 		if (!issue_parts) {
-			throw new Error('Invalid issue string format')
+			throw new Error(
+				`Invalid issue string format.\nissue_string: ${issue_string}\nissue_parts: ${issue_parts}`
+			)
 		}
 
 		const name_part = issue_parts[1]
 		const number_part = issue_parts[2]
 
 		if (!name_part || !number_part) {
-			throw new Error('Invalid issue string format')
+			throw new Error(
+				`Invalid issue string format.\nname_part: ${name_part}\nnumber_part: ${number_part}`
+			)
 		}
 
 		const issue_number = number_part.substring(1)
@@ -29,7 +32,6 @@ export class CreateGitBranch {
 		const issue_name = replaced_issue_name.replaceAll(/[^a-zA-Z0-9- .]/g, '').trim()
 		const kebab_case_issue_name = this._to_kebab_case(issue_name)
 
-		// Issue番号とkebab-case形式のIssue名を組み合わせてブランチ名を生成
 		const branch_name = `${issue_number}-${kebab_case_issue_name}`
 
 		// eslint-disable-next-line no-console
@@ -59,7 +61,7 @@ export class CreateGitBranch {
 	}
 }
 
-const args = process.argv.slice(2) // 最初の2つの要素はNode.jsの実行パスとスクリプトのファイルパスなので、スライスで削除します。
+const args = process.argv.slice(2)
 
 if (args.length > 0) {
 	const issue_string = args[0]

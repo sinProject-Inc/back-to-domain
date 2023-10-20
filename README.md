@@ -1,38 +1,40 @@
-# create-svelte
+<div align="center">
+  <img src="https://sinproject.net/wp-content/uploads/2019/12/sinProject-01-640x677.png" width="250">
+  <h1>back-to-domain</h1>
+  <br />
+</div>
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## What is `back-to-domain`?
 
-## Creating a project
+This will perform a reverse DNS lookup from the IP address and also retrieve the Whois information.
 
-If you're seeing this, you've probably already done this step. Congrats!
+Visit [back-to-domain.sinpro.dev](https://back-to-domain.sinpro.dev/)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Creating a Project
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### Setting up the project
 
 ```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
+git clone https://github.com/sinProject-Inc/back-to-domain.git
+cd /back-to-domain
+npm install
 npm run dev -- --open
 ```
 
-## Building
+## Feedback
 
-To create a production version of your app:
+👉 [**Ask a question**](https://github.com/sinProject-Inc/back-to-domain/discussions/new)
 
-```bash
-npm run build
-```
+👉 [**Request a new feature**](https://github.com/sinProject-Inc/back-to-domain/issues/new)
 
-You can preview the production build with `npm run preview`.
+👉 [**Upvote popular feature requests**](https://github.com/sinProject-Inc/back-to-domain/issues/)
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+👉 [**Create a bug report**](https://github.com/sinProject-Inc/back-to-domain/issues/new)
+
+👉 [**Become a sponsor**](https://github.com/sponsors/sinproject-iwasaki)
+
+## License
+
+Copyright (c) sinProject Inc. All rights reserved.
+
+Licensed under the [MIT](https://github.com/sinProject-Inc/back-to-domain/blob/main/LICENSE) license.

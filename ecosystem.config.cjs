@@ -1,7 +1,7 @@
 module.exports = {
 	apps: [
 		{
-			name: 'sinpro-template-for-sveltekit',
+			name: 'back-to-domain',
 			script: 'build',
 			interpreter: 'node',
 			interpreterArgs: '--loader tsx',
@@ -10,7 +10,7 @@ module.exports = {
 			watch: false,
 			ignore_watch: ['logs'],
 			env: {
-				PORT: 3005,
+				PORT: 3006,
 			},
 		},
 	],
