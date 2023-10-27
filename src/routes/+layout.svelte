@@ -1,5 +1,6 @@
 <script>
 	import { version } from '$app/environment'
+	import { App } from '$lib/app'
 	import { pwaInfo } from 'virtual:pwa-info'
 	import '../app.css'
 
@@ -12,11 +13,10 @@
 	{@html web_manifest_link}
 </svelte:head>
 
-<slot />
-
-<h1 class="text-3xl font-bold underline">Hello world!</h1>
-
-{version}
+<div class="m-4 flex flex-col gap-4 text-center">
+	<slot />
+	{App.copyright} v{version}
+</div>
 
 <style lang="postcss">
 	:global(html) {

@@ -100,7 +100,8 @@
 		"viewports",
 		"vivus",
 		"Wappalyzer",
-		"Wavenet"
+		"Wavenet",
+		"whois"
 	],
 	"cSpell.enabledLanguageIds": [
 		"asciidoc",
