@@ -14,8 +14,6 @@
 
 <h1>{App.app_name}</h1>
 
-<div>
-	<input type="text" value={ip_address} class="text-center" />
-</div>
-<button type="submit">Submit</button>
+<input class="input text-center" type="text" value={ip_address} placeholder="Enter IP Address" />
+<button type="button" class="variant-ghost-primary btn">Submit</button>
 <div>{host_name}</div>
