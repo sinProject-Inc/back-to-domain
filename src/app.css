@@ -5,3 +5,8 @@
 h1 {
 	@apply text-4xl;
 }
+
+button,
+input {
+	padding: 8px 12px;
+}

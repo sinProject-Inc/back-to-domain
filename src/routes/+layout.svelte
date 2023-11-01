@@ -13,13 +13,10 @@
 	{@html web_manifest_link}
 </svelte:head>
 
-<div class="m-4 flex flex-col gap-4 text-center">
+<div class="mx-auto flex max-w-xl flex-col gap-4 p-4 text-center">
 	<slot />
 	{App.copyright} v{version}
 </div>
 
 <style lang="postcss">
-	:global(html) {
-		background-color: theme(colors.gray.100);
-	}
 </style>
