@@ -1,5 +1,5 @@
 import { expect, it } from 'vitest'
-import { get_domain } from './back-to-domain'
+import { extract_domain, reverse_lookup } from './back-to-domain'
 
 type Spec = {
 	name: string
@@ -34,19 +34,51 @@ it.each(specs)('get_domain($ip) -> $expected', async (spec) => {
 	const { ip, expected } = spec
 
 	if (!ip) {
-		expect(get_domain(ip)).rejects.toThrow('Failed to reverse lookup for IP')
+		expect(reverse_lookup(ip)).rejects.toThrow('Failed to reverse lookup for IP')
 
 		return
 	}
 
 	if (ip === '192.168.0.1') {
-		expect(get_domain(ip)).rejects.toThrow('Failed to reverse lookup for IP')
+		expect(reverse_lookup(ip)).rejects.toThrow('Failed to reverse lookup for IP')
 
 		return
 	}
 
-	const domains = await get_domain(ip)
+	const domains = await reverse_lookup(ip)
 	const domain = domains[0]
+
+	expect(domain).toBe(expected)
+})
+
+type FqdnSpec = {
+	name: string
+	fqdn: string
+	expected: string
+}
+
+const fqdn_specs: FqdnSpec[] = [
+	{
+		name: 'should return the domain',
+		fqdn: 'fp7452cd88.oski512.ap.nuro.jp',
+		expected: 'nuro.jp',
+	},
+	{
+		name: 'should return the domain',
+		fqdn: 'p7201061-ipoefx.ipoe.ocn.ne.jp',
+		expected: 'ocn.ne.jp',
+	},
+	{
+		name: 'empty',
+		fqdn: '',
+		expected: '',
+	},
+]
+
+it.each(fqdn_specs)('extract_domain($fqdn) -> $expected', (spec) => {
+	const { fqdn, expected } = spec
+
+	const domain = extract_domain(fqdn)
 
 	expect(domain).toBe(expected)
 })

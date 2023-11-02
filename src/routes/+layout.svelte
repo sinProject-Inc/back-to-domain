@@ -13,9 +13,12 @@
 	{@html web_manifest_link}
 </svelte:head>
 
-<div class="mx-auto flex max-w-xl flex-col gap-4 p-4 text-center">
+<div class="mx-auto flex max-w-2xl flex-col gap-4 p-4 text-center">
 	<slot />
-	{App.copyright} v{version}
+	<div title="Copyright">
+		{App.copyright}
+		{App.app_name} v{version}
+	</div>
 </div>
 
 <style lang="postcss">

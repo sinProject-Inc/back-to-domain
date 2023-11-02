@@ -1,4 +1,4 @@
-import * as whois from 'whois'
+import whois from 'whois'
 import { promisify } from 'util'
 
 const whois_lookup_async = promisify(whois.lookup)
