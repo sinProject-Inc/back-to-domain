@@ -16,10 +16,6 @@ closes #ISSUE_NUMBER
 
 # For the Reviewer
 
-## Before Reviewing
-
-- [ ] Write which PR you are reviewing on Slack
-
 ## Checks
 
 - [ ] Each task for the related issue are written and in checkboxes
@@ -35,3 +31,4 @@ closes #ISSUE_NUMBER
 
 - [ ] Leave an approval comment (e.g. LGTM)
 - [ ] On Slack, mention the PR submitter and a project admin, write which PR you have reviewed, and ask them to merge the PR
+- [ ] Write an approval comment with praise on Slack
