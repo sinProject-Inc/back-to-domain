@@ -28,6 +28,11 @@ const specs: Spec[] = [
 		domain: 'togei-sf.co.jp',
 		expected: '[Registered Date]               2017/12/17',
 	},
+	{
+		name: 'nuro',
+		domain: 'nuro.jp',
+		expected: 'nuro.jp',
+	},
 ]
 
 it.each(specs)('get_whois($domain)', async (spec) => {
