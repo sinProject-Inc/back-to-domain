@@ -13,7 +13,7 @@ export const load: PageServerLoad = async ({ getClientAddress: get_client_addres
 type ActionReturn = {
 	ip_address?: string
 	fqdn?: string
-	whois?: string | undefined
+	whois?: string
 	error?: string
 }
 
@@ -32,10 +32,17 @@ export const actions = {
 			const domain = fqdn ? extract_domain(fqdn) : undefined
 			const whois = domain ? await get_whois(domain) : undefined
 
-			return {
-				ip_address,
-				fqdn,
-				whois,
+			if (whois) {
+				return {
+					ip_address,
+					fqdn,
+					whois,
+				}
+			} else {
+				return {
+					ip_address,
+					fqdn,
+				}
 			}
 		} catch (error) {
 			const message = (error as Error).message
