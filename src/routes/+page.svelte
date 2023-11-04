@@ -1,15 +1,25 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
 	import { App } from '$lib/app'
+	import LoadingIcon from '$lib/components/icons/loading_icon.svelte'
 	import type { ActionData, PageData } from './$types'
 
 	export let data: PageData
 	export let form: ActionData
 
-	let ip_address: string
+	let ip_address = ''
+	let is_sending = false
 
 	function copy_client_ip_address(): void {
 		ip_address = data.client_address
+	}
+
+	function on_submit(): void {
+		is_sending = true
+	}
+
+	$: {
+		if (form) is_sending = false
 	}
 </script>
 
@@ -19,7 +29,7 @@
 
 <h1>{App.app_name}</h1>
 
-<form method="POST" use:enhance>
+<form method="POST" use:enhance on:submit={on_submit}>
 	<div class="flex flex-col gap-4">
 		<div class="flex flex-row items-center justify-center gap-4">
 			Client IP Address: {data.client_address}
@@ -36,7 +46,15 @@
 			bind:value={ip_address}
 			placeholder="Enter IP Address"
 		/>
-		<button class="variant-ghost-primary btn">Submit</button>
+		<button data-testid="submit-button" class="variant-ghost-primary btn" disabled={is_sending}>
+			{#if is_sending}
+				<div class="w-6 animate-spin">
+					<LoadingIcon />
+				</div>
+			{:else}
+				Submit
+			{/if}
+		</button>
 	</div>
 </form>
 

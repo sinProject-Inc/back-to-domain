@@ -15,6 +15,16 @@ test('initialize page', async ({ page }) => {
 	await expect(page.getByTitle('copyright')).toContainText('© sinProject. Back To Domain v')
 })
 
+test('submit button', async ({ page }) => {
+	await expect(page.getByTestId('submit-button')).toBeEnabled()
+
+	await page.getByPlaceholder('Enter IP Address').fill('127.0.0.1')
+	await page.getByTestId('submit-button').click()
+
+	await expect(page.getByTestId('submit-button')).toBeDisabled()
+	await expect(page.getByTestId('submit-button')).toBeEnabled()
+})
+
 type Spec = {
 	name: string
 	ip_address: string
@@ -54,7 +64,7 @@ specs.forEach((spec) => {
 		const { ip_address, expected_ip_address, expected_fqdn, expected_whois, expected_error } = spec
 
 		await page.getByPlaceholder('Enter IP Address').fill(ip_address)
-		await page.getByRole('button', { name: 'Submit' }).click()
+		await page.getByTestId('submit-button').click()
 
 		if (expected_ip_address) {
 			await expect(page.getByTitle('IP Address')).toHaveText(expected_ip_address)
