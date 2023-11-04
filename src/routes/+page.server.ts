@@ -17,40 +17,53 @@ type ActionReturn = {
 	error?: string
 }
 
+async function get_response(data: FormData): Promise<ActionReturn> {
+	const ip_address = data.get('ip_address')?.toString() ?? ''
+
+	if (!ip_address) {
+		return {}
+	}
+
+	try {
+		const fqdns = await reverse_lookup(ip_address)
+		const fqdn = fqdns[0] ?? ''
+		const domain = fqdn ? extract_domain(fqdn) : undefined
+		const whois = domain ? await get_whois(domain) : undefined
+
+		if (whois) {
+			return {
+				ip_address,
+				fqdn,
+				whois,
+			}
+		} else {
+			return {
+				ip_address,
+				fqdn,
+			}
+		}
+	} catch (error) {
+		const message = (error as Error).message
+
+		return {
+			ip_address,
+			error: message,
+		}
+	}
+}
+
 export const actions = {
 	default: async ({ request }): Promise<ActionReturn> => {
 		const data = await request.formData()
-		const ip_address = data.get('ip_address')?.toString() ?? ''
 
-		if (!ip_address) {
-			return {}
-		}
+		// eslint-disable-next-line no-console
+		console.log('POST DATA', Object.fromEntries(data))
 
-		try {
-			const fqdns = await reverse_lookup(ip_address)
-			const fqdn = fqdns[0] ?? ''
-			const domain = fqdn ? extract_domain(fqdn) : undefined
-			const whois = domain ? await get_whois(domain) : undefined
+		const response = await get_response(data)
 
-			if (whois) {
-				return {
-					ip_address,
-					fqdn,
-					whois,
-				}
-			} else {
-				return {
-					ip_address,
-					fqdn,
-				}
-			}
-		} catch (error) {
-			const message = (error as Error).message
+		// eslint-disable-next-line no-console
+		// console.log('RESPONSE', response)
 
-			return {
-				ip_address,
-				error: message,
-			}
-		}
+		return response
 	},
 } satisfies Actions
