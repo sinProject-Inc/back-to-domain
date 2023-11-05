@@ -46,14 +46,14 @@
 		switch (id) {
 			case AdsId.display_1:
 			case AdsId.display_2:
-			case AdsId.display_3:
-				ad_element.dataset['adFormat'] = 'auto'
-				ad_element.dataset['fullWidthResponsive'] = 'true'
-				break
+			// case AdsId.display_3:
+			// 	ad_element.dataset['adFormat'] = 'auto'
+			// 	ad_element.dataset['fullWidthResponsive'] = 'true'
+			// 	break
 
-			case AdsId.multiplex_1:
-				ad_element.dataset['adFormat'] = 'autorelaxed'
-				break
+			// case AdsId.multiplex_1:
+			// 	ad_element.dataset['adFormat'] = 'autorelaxed'
+			// 	break
 		}
 
 		return ad_element
