@@ -10,7 +10,7 @@ module.exports = {
 			watch: false,
 			ignore_watch: ['logs'],
 			env: {
-				PORT: 3006,
+				PORT: 3005,
 			},
 		},
 	],
