@@ -1,7 +1,17 @@
 <script context="module" lang="ts">
-	export enum AdsId {
-		display_1 = '7629854255',
-		display_2 = '4511369347',
+	enum AdType {
+		display,
+		multiplex,
+	}
+
+	type Ad = {
+		type: AdType
+		id: string
+	}
+
+	export class Ads {
+		public static readonly display_1: Ad = { type: AdType.display, id: '7629854255' }
+		public static readonly display_2: Ad = { type: AdType.display, id: '4511369347' }
 	}
 </script>
 
@@ -11,7 +21,7 @@
 
 	let ad_container: HTMLDivElement
 
-	export let id: AdsId
+	export let ad: Ad
 
 	function load_ad_sense_script(): void {
 		if (document.getElementById('ad_sense_script')) return
@@ -41,19 +51,17 @@
 	function create_ad(): HTMLModElement {
 		const ad_element = create_ad_template()
 
-		ad_element.dataset['adSlot'] = id
+		ad_element.dataset['adSlot'] = ad.id
 
-		switch (id) {
-			case AdsId.display_1:
-			case AdsId.display_2:
-			// case AdsId.display_3:
-			// 	ad_element.dataset['adFormat'] = 'auto'
-			// 	ad_element.dataset['fullWidthResponsive'] = 'true'
-			// 	break
+		switch (ad.type) {
+			case AdType.display:
+				ad_element.dataset['adFormat'] = 'auto'
+				ad_element.dataset['fullWidthResponsive'] = 'true'
+				break
 
-			// case AdsId.multiplex_1:
-			// 	ad_element.dataset['adFormat'] = 'autorelaxed'
-			// 	break
+			case AdType.multiplex:
+				ad_element.dataset['adFormat'] = 'autorelaxed'
+				break
 		}
 
 		return ad_element
