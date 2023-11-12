@@ -3,7 +3,7 @@
 	import { App } from '$lib/app'
 	import LoadingIcon from '$lib/components/icons/loading_icon.svelte'
 	import type { ActionData, PageData } from './$types'
-	import AdSense, { AdsId } from '$lib/components/ad_sense.svelte'
+	import AdSense, { Ads } from '$lib/components/ad_sense.svelte'
 
 	export let data: PageData
 	export let form: ActionData
@@ -30,7 +30,7 @@
 
 <h1>{App.app_name}</h1>
 
-<AdSense id={AdsId.display_1} />
+<AdSense ad={Ads.display_1} />
 
 <form method="POST" use:enhance on:submit={on_submit}>
 	<div class="flex flex-col gap-4">
@@ -80,4 +80,4 @@
 	</div>
 {/if}
 
-<AdSense id={AdsId.display_2} />
+<AdSense ad={Ads.display_2} />
