@@ -9,8 +9,6 @@ assignees: ''
 # Before Working on the Issue
 
 - [ ] Assign yourself
-- [ ] Share your screen on Discord
-- [ ] Write which issue you are starting on Slack
 - [ ] Git: Fetch the latest main
 - [ ] Git: Create a branch with the name of the issue
 
@@ -18,10 +16,10 @@ assignees: ''
 
 ## Tasks
 
-- [ ] `npm version minor` or `npm version patch` で package のバージョンを 3 箇所書き換える。
+- [ ] マイナーバージョンを上げる場合 `npm version minor` を実行する。パッチバージョンを上げる場合 `npm version patch` を実行する。
 - [ ] push する。
-- [ ] PR を作成する。その際、Issue は Close しないので書き換えなくていい。
-- [ ] PR は、何もチェックせずにマージする。
+- [ ] PR を作成する。PR title は `<Issue Title> <Issue Number>` とする。その他 PR の記載やチェックボックスは変更しないこと。
+- [ ] PDMに連絡し、PRをマージしてもらう。
 - [ ] 作成された タグを origin に push する。
 
 ## GitHub
@@ -37,11 +35,11 @@ assignees: ''
 ## Server
 
 - [ ] `ssh dev@sinpro-dev` で接続する。
-- [ ] cd ~/dev/sinpro-template-for-sveltekit
-- [ ] git checkout main && git pull
-- [ ] npm i --legacy-peer-deps
-- [ ] npm run build
-- [ ] pm2 restart sinpro-template-for-sveltekit
+- [ ] `cd ~/dev/back-to-domain`
+- [ ] `git checkout main && git pull`
+- [ ] `npm i --legacy-peer-deps`
+- [ ] `npm run build`
+- [ ] `pm2 restart back-to-domain`
 
 ## Check
 
