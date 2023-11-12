@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { enhance } from '$app/forms'
 	import { App } from '$lib/app'
-	import LoadingIcon from '$lib/components/icons/loading_icon.svelte'
-	import type { ActionData, PageData } from './$types'
 	import AdSense, { Ads } from '$lib/components/ad_sense.svelte'
+	import LoadingIcon from '$lib/components/icons/loading_icon.svelte'
+	import NProgress from 'nprogress'
+	import 'nprogress/nprogress.css'
+	import type { ActionData, PageData } from './$types'
 
 	export let data: PageData
 	export let form: ActionData
@@ -21,6 +23,16 @@
 
 	$: {
 		if (form) is_sending = false
+	}
+
+	NProgress.configure({ showSpinner: false })
+
+	$: {
+		if (is_sending) {
+			NProgress.start()
+		} else {
+			NProgress.done()
+		}
 	}
 </script>
 
