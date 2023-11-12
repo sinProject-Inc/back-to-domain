@@ -51,7 +51,7 @@ const specs: Spec[] = [
 		name: 'error',
 		ip_address: 'aaa',
 		expected_ip_address: 'IP Address: aaa',
-		expected_error: 'Failed to reverse lookup for IP aaa: getHostByAddr EINVAL aaa',
+		expected_error: 'Failed to reverse lookup: getHostByAddr EINVAL aaa',
 	},
 	{
 		name: 'empty',

@@ -12,7 +12,7 @@
 	let is_sending = false
 
 	function copy_client_ip_address(): void {
-		ip_address = data.client_address
+		ip_address = data.client_ip
 	}
 
 	function on_submit(): void {
@@ -35,7 +35,7 @@
 <form method="POST" use:enhance on:submit={on_submit}>
 	<div class="flex flex-col gap-4">
 		<div class="flex flex-row items-center justify-center gap-4">
-			Client IP Address: {data.client_address}
+			Client IP: {data.client_ip}
 			<button type="button" class="variant-ghost-primary btn" on:click={copy_client_ip_address}
 				>Copy</button
 			>

@@ -13,7 +13,7 @@ export async function reverse_lookup(ip_address: string): Promise<string[]> {
 	} catch (error) {
 		const message = (error as Error).message
 
-		throw new Error(`Failed to reverse lookup for IP ${ip_address}: ${message}`)
+		throw new Error(`Failed to reverse lookup: ${message}`)
 	}
 }
 

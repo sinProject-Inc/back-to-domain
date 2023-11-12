@@ -1,12 +1,13 @@
 import { extract_domain, reverse_lookup } from '$lib/back-to-domain'
+import { ClientIP } from '$lib/client-ip'
 import { get_whois } from '$lib/whois'
 import type { Actions, PageServerLoad } from './$types'
 
-export const load: PageServerLoad = async ({ getClientAddress: get_client_address }) => {
-	const client_address = get_client_address()
+export const load: PageServerLoad = async ({ request, getClientAddress: get_client_address }) => {
+	const client_ip = new ClientIP(request, get_client_address).value
 
 	return {
-		client_address,
+		client_ip,
 	}
 }
 

@@ -34,13 +34,15 @@ it.each(specs)('get_domain($ip) -> $expected', async (spec) => {
 	const { ip, expected } = spec
 
 	if (!ip) {
-		expect(reverse_lookup(ip)).rejects.toThrow('Failed to reverse lookup for IP')
+		expect(reverse_lookup(ip)).rejects.toThrow('Failed to reverse lookup: getHostByAddr EINVAL')
 
 		return
 	}
 
 	if (ip === '192.168.0.1') {
-		expect(reverse_lookup(ip)).rejects.toThrow('Failed to reverse lookup for IP')
+		expect(reverse_lookup(ip)).rejects.toThrow(
+			'Failed to reverse lookup: getHostByAddr ENOTFOUND 192.168.0.1'
+		)
 
 		return
 	}
